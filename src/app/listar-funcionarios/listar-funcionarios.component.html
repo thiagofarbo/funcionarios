@@ -1,0 +1,70 @@
+<div class="card mt-3">
+  <div class="card-header">
+    <div class="float-left">
+      <h5>Lista de Funcionários</h5>
+    </div>
+    <div class="float-right">
+      <button type="button" class="btn btn-success" routerLink="cadastrar-funcionario"> Novo Funcionário</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>CPF</th>
+          <th>Nome</th>
+          <th>Cargo</th>
+          <th>Salário</th>
+          <th>Data Admissão</th>
+          <th>Data Demissão</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let funcionario of funcionariosArray" >
+          <td>{{funcionario.id}}</td>
+          <td>{{funcionario.cpf}}</td>
+          <td>{{funcionario.nome}}</td>
+          <td>{{funcionario.cargo}}</td>
+          <td>{{funcionario.salario}}</td>
+          <td>{{funcionario.dataAdmissao}}</td>
+          <td>{{funcionario.dataDemissao}}</td>
+          <td>{{funcionario.status}}</td>
+          <td>
+            <span class="float-right">
+              <button class="btn btn-outline-warning mb-1 btn-sm" (click)="updateFuncionario(funcionario.id)">
+                Atualizar
+              </button>
+
+              <button class="btn btn-outline-danger mb-1 btn-sm" (click)="deletarFuncionario(funcionario)">
+                Remover
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #loading>
+      <span>Carregando lista de funcionário...</span>
+    </ng-template>
+
+    <!--ng-template #loadingError>
+      <div *ngIf="error$ | async; else loading" >
+        Erro ao carregar cursos. Tente novamente mais tarde.
+      </div>
+      <ng-template #loading>
+          <span>Carregando Cursos...</span>
+      </ng-template>
+    </ng-template -->
+  </div>
+</div>
+
+<ng-template #modalDeletarFuncionario>
+  <div class="modal-body text-center">
+    <p>Tem certeza que deseja remover este funcionário ?</p>
+    <button type="button" class="btn btn-default" (click)="onConfirmacaoDeletarFuncionario()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="onDesistirDeletarFuncionario()">Não</button>
+  </div>
+</ng-template>

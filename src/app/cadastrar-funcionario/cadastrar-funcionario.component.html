@@ -1,0 +1,71 @@
+  
+  <div class="container head-margem-div">
+   <form class="needs-validation" novalidate [formGroup]="formCadastrar">
+    <div class="form-row head-margem">
+      <div class="float-left">
+          <h4>Cadastro de Funcionários</h4>
+        </div>
+    <div class="col-sm-12 spaco-entre-campos">
+      <input type="text" class="form-control" id="nome" placeholder="Nome" formControlName="nome"
+      [ngClass]="{ 'is-invalid': isSubmitted && verificarErrosForm('nome') }">
+      <div class="invalid-feedback" *ngIf="verificarErrosForm('nome') && verificarErrosForm('nome') ['required']">
+          Nome é obrigatório.
+      </div>
+    </div>
+    <div class="col-sm-12 spaco-entre-campos">
+      <input type="text" class="form-control" id="cargo" placeholder="Cargo" formControlName="cargo"
+        [ngClass]="{ 'is-invalid': isSubmitted && verificarErrosForm('cargo') }">
+        <div class="invalid-feedback" *ngIf="verificarErrosForm('cargo') && verificarErrosForm('cargo') ['required']">
+            Cargo é obrigatório.
+        </div>
+      </div>
+
+    <div class="col-sm-12 spaco-entre-campos">
+      <input type="text" mask="000.000.000-99"  class="form-control" id="cpf" placeholder="CPF" formControlName="cpf"
+        [ngClass]="{ 'is-invalid': isSubmitted && verificarErrosForm('cpf') }">
+        <div class="invalid-feedback" *ngIf="verificarErrosForm('cpf') && verificarErrosForm('cpf') ['required']">
+            CPF é obrigatório.
+          </div>
+    </div>
+
+    <div class="col-sm-12 spaco-entre-campos">
+      <input type="text" appCurrencyMask class="form-control" id="salario" placeholder="Salario" maxlength = "6"
+        formControlName="salario" [ngClass]="{ 'is-invalid': isSubmitted && verificarErrosForm('salario') }">
+      <div class="invalid-feedback" *ngIf="verificarErrosForm('salario') && verificarErrosForm('salario') ['required']">
+          Salário é obrigatório.
+      </div>
+    </div>
+
+    <div class="col-sm-12 spaco-entre-campos">
+      <input type="text" class="form-control" id="dataAdmissao" placeholder="Data Admissão" bsDatepicker [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD-MM-YYYY' }"
+        formControlName="dataAdmissao" [ngClass]="{ 'is-invalid': isSubmitted && verificarErrosForm('dataAdmissao')}">
+      <div class="invalid-feedback" *ngIf="verificarErrosForm('dataAdmissao') && verificarErrosForm('dataAdmissao') ['required']">
+        Data de Admissão é obrigatório.
+      </div>
+    </div>
+
+    <div class="col-sm-12 spaco-entre-campos" style="padding-top: 10px">
+      <input type="text" class="form-control" id="dataDemissao" placeholder="Data Demissão" bsDatepicker [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD-MM-YYYY' }" 
+        formControlName="dataDemissao" [ngClass]="{ 'is-invalid': isSubmitted && verificarErrosForm('dataDemissao')}">
+      <!-- <div class="invalid-feedback" *ngIf="verificarErrosForm('dataAdmissao') && verificarErrosForm('dataDemissao') ['required']">
+        Data Demissão é obrigatório.
+      </div> -->
+    </div>
+
+    <div class="col-sm-12 spaco-entre-campos">
+      <select  type="text" id="status"  formControlName="status" class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && verificarErrosForm('status')}">
+        <option selected> ATIVO</option>
+        <option>INATIVO</option>
+      </select>
+      <div class="invalid-feedback" *ngIf="verificarErrosForm('status') && verificarErrosForm('status') ['required']">
+          Status é obrigatório.
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 10px">
+    <button type="submit" class="btn btn-primary" (click)="cadastrarFuncionario()">Salvar</button>
+
+    <button type="button" class="btn btn-success" (click)="cancelarCadastro()">Voltar</button>
+  </div>
+</form>
+</div>
